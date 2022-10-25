@@ -1,0 +1,27 @@
+services:
+  mongodb:
+    container_name: catalog-mongodb
+    image: mongo:6
+    restart: always
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - 27017:27017
+  api:
+    container_name: catalog-api
+    image: node:18
+    working_dir: /usr/src/app
+    restart: always # Policy applied to the container termination
+    environment: # Environment variables
+      - MONGO_URL=mongodb://mongodb:27017/catalog
+    volumes: # Defines the volumes to be mounted in the container
+      - ./package.json:/usr/src/app/package.json
+      - ./package-lock.json:/usr/src/app/package-lock.json
+      - ./dist:/usr/src/app/dist
+    ports: # Exposes container ports to the host (HOST:CONTAINER)
+      - 3000:3000
+    command: bash -c "npm install && npm run dev" # Overrides the default cmd of the image
+    links: # Links the container to another container using a network alias
+      - mongodb
+    depends_on: # Defines the dependencies of the container
+      - mongodb
