@@ -1,9 +1,10 @@
 import 'module-alias/register'
-import DbConnection from '@infrastructure/db/mongodb/helpers/db-connection'
+import setupDatabase from '@main/config/database'
 import setupApp from '@main/config/app'
 import env from '@main/config/env'
 
-DbConnection.connect(env.mongoUrl).then(() => {
+void (async () => {
+  await setupDatabase()
   const app = setupApp()
   app.listen(env.port, () => console.log(`Server running on port ${env.port}`))
-}).catch(console.error)
+})()

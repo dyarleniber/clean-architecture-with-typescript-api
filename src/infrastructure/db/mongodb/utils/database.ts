@@ -1,31 +1,30 @@
-import { Collection, MongoClient } from 'mongodb'
+import { MongoClient } from 'mongodb'
 
-class DbConnection {
+class Database {
   private url?: string
 
   private client?: MongoClient
 
-  async connect (url: string): Promise<void> {
+  public async connect (url: string): Promise<void> {
     this.url = url
     this.client = new MongoClient(url)
     await this.client.connect()
   }
 
-  async disconnect (): Promise<void> {
+  public async disconnect (): Promise<void> {
     await this.client?.close()
     this.client = undefined
   }
 
-  async getCollection (name: string): Promise<Collection> {
+  public async getClient (): Promise<MongoClient> {
     if (!this.client && this.url) {
       await this.connect(this.url)
     }
-    const db = this.client?.db()
-    if (!db) {
+    if (!this.client) {
       throw new Error('MongoDB client is not connected')
     }
-    return db.collection(name)
+    return this.client
   }
 }
 
-export default new DbConnection()
+export default new Database()
