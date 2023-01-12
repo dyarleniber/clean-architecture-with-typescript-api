@@ -1,4 +1,4 @@
-[Back](../README.md)
+[Back](../../README.md)
 
 ## HTTP Routes
 
@@ -49,11 +49,11 @@
 
 ### Website Routes
 
-| Method | Route         | Description        |
-|:-------|:--------------|:-------------------|
-| GET    | /cities       | Get all cities     |
-| GET    | /zones        | Get all zones      |
-| GET    | /catalogs     | Get the catalogs   |
-| GET    | /retailers    | Get all retailers  |
-| GET    | /categories   | Get all categories |
-| GET    | /catalogs/:id | Get a catalog      |
+| Method | Route           | Description        |
+|:-------|:----------------|:-------------------|
+| GET    | /cities         | Get all cities     |
+| GET    | /zones          | Get all zones      |
+| GET    | /catalogs       | Get the catalogs   |
+| GET    | /retailers      | Get all retailers  |
+| GET    | /categories     | Get all categories |
+| GET    | /catalogs/:slug | Get a catalog      |

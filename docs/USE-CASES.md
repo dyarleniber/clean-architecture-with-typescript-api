@@ -1,4 +1,4 @@
-[Back](../README.md)
+[Back](../../README.md)
 
 ## Actors
 
@@ -192,13 +192,13 @@
     - **Input**:
         - Email address of the admin/editor.
         - Password of the admin/editor.
-        - Login data (IP address, user agent, date time).
+        - Login data (IP address, date time).
     - **Output**:
         - Returns a valid access token if the admin/editor exists, the status is active and the password is correct.
         - Returns an error if the admin/editor does not exist.
         - Returns an error if the admin/editor is not active.
         - Returns an error if the password is incorrect.
-        - Logs the ip address, user agent and datetime when the login is successful.
+        - Logs the ip address and datetime when the login is successful.
 
 ---
 
@@ -337,10 +337,9 @@
 - **GetCategories**: The consumer must be able to get categories.
     - **Input**:
         - Country code.
-        - City id.
     - **Output**:
         - Returns a list of categories.
-        - Returns only the categories for the provided location (country code and city id).
+        - Returns only the categories for the provided location (country code).
         - Returns a list of categories ordered by the weight field (descending).
 
 ---
@@ -349,7 +348,7 @@
     - **Input**:
         - Country code.
         - City id.
-        - Catalog id.
+        - Catalog slug.
     - **Output**:
         - Returns the catalog data if the catalog status is "approved".
         - Returns the catalog data only for the provided location (country code and city id).
